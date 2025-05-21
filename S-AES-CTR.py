@@ -57,12 +57,26 @@ def key_expansion(key):
         keys[i] = (words[2*i])*0x100 + (words[2*i+1])
     return keys
 
-def saes_encrypt(block,key):
+
+def sub_nibbles(state):
+    return [SBOX[state[0]], SBOX[state[1]], SBOX[state[2]], SBOX[state[3]]]
+
+
+def shift_rows(state):
+    return [state[0], state[3], state[2], state[1]]
+
+
+def saes_encrypt(block, keys):
+    state = [(block >> 12) & 0xF, (block >> 8) &
+             0xF, (block >> 4) & 0xF, block & 0xF]
+
+    state = [state[i] ^ keys[0] for i in range(4)]
+    # Round 1
     return 0
 
 
 key = 0x2475
 keys = key_expansion(key)
 
-for i in range(3):
-    print(hex(keys[i]))
+for i in range(4):
+    print(hex(sub_nibbles([2, 4, 7, 5])[i]))
