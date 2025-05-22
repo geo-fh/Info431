@@ -77,6 +77,11 @@ def key_expansion(key):
     return keys
 
 
+def add_round_key(state, key):
+    key_frags = [(key >> 12) & 0xF, (key >> 8) & 0xF, (key >> 4) & 0xF, key & 0xF]
+    state = [state[i] ^ key_frags[i] for i in range(4)]
+    return state
+
 def sub_nibbles(state):
     return [SBOX[state[0]], SBOX[state[1]], SBOX[state[2]], SBOX[state[3]]]
 
@@ -89,8 +94,8 @@ def gf_mult(num1, num2):
 
 def mix_columns(state):
     temp_state = [None]*4
-    temp_state[1] = gf_mult(MIX_COL[1][0],state[0]) ^ gf_mult(MIX_COL[1][1],state[1])
     temp_state[0] = gf_mult(MIX_COL[0][0],state[0]) ^ gf_mult(MIX_COL[0][1],state[1])
+    temp_state[1] = gf_mult(MIX_COL[1][0],state[0]) ^ gf_mult(MIX_COL[1][1],state[1])
     temp_state[2] = gf_mult(MIX_COL[0][0],state[2]) ^ gf_mult(MIX_COL[0][1],state[3])
     temp_state[3] = gf_mult(MIX_COL[1][0],state[2]) ^ gf_mult(MIX_COL[1][1],state[3])
     return temp_state
@@ -99,10 +104,18 @@ def mix_columns(state):
 def saes_encrypt(block, keys):
     state = [(block >> 12) & 0xF, (block >> 8) &
              0xF, (block >> 4) & 0xF, block & 0xF]
-
-    state = [state[i] ^ keys[0] for i in range(4)]
+    state = add_round_key(state, keys[0])
     # Round 1
-    return 0
+    state = sub_nibbles(state)
+    state = shift_rows(state)
+    state = mix_columns(state)
+    state = add_round_key(state, keys[1])
+    # Round 2
+    state = sub_nibbles(state)
+    state = shift_rows(state)
+    state = add_round_key(state, keys[2])
+
+    return (state[0] << 12) | (state[1] << 8) | (state[2] << 4) | state[3]
 
 
 key = 0x2475
@@ -111,5 +124,5 @@ keys = key_expansion(key)
 """for i in range(4):
     print(hex(sub_nibbles([2, 4, 7, 5])[i]))"""
 
-temp = mix_columns([0x2,0xe,0xe,0xe])
-print(temp)
+temp = saes_encrypt(0x1A23, keys)
+#print(hex(temp))
