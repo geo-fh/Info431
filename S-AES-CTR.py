@@ -117,12 +117,27 @@ def saes_encrypt(block, keys):
 
     return (state[0] << 12) | (state[1] << 8) | (state[2] << 4) | state[3]
 
+def saes_ctr_encrypt(plaintext, key, nonce):
+    ciphertext = []
+    keys = key_expansion(key)
+    counter = nonce << 8
+    for i, byte in enumerate(plaintext):
+        counter += i
+        keystream_block = saes_encrypt(counter, keys)
+        ciphertext.append(byte ^ ((keystream_block >> 8)))
+    return bytes(ciphertext)
+
+def saes_ctr_decrypt(ciphertext, key, nonce):
+    bytes_cipher = bytes.fromhex(ciphertext)
+    return saes_ctr_encrypt(bytes_cipher, key, nonce)
 
 key = 0x2475
-keys = key_expansion(key)
+nonce = 0x10
 
-"""for i in range(4):
-    print(hex(sub_nibbles([2, 4, 7, 5])[i]))"""
+plaintext = b"Test String"
+ciphertext = saes_ctr_encrypt(plaintext, key, nonce)
+print(f"Ciphertext: {ciphertext.hex()}")
 
-temp = saes_encrypt(0x1A23, keys)
-#print(hex(temp))
+encrypted_message = "d677a12602918e488a0dcc"
+decrypted_message = saes_ctr_decrypt(encrypted_message, key, nonce)
+print(f"Decrypted Cipher: {decrypted_message.decode()}")
