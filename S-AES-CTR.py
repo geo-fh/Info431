@@ -47,7 +47,7 @@ def to_hex(string):
 
 
 def rot_word(word):
-    word = hex(word)
+    word = "0x{:02x}".format(word)
     return word[-1] + word[-2]
 
 
@@ -117,10 +117,15 @@ def saes_encrypt(block, keys):
 
     return (state[0] << 12) | (state[1] << 8) | (state[2] << 4) | state[3]
 
+"""Shifts nonce into 8-bit size"""
+def shift_nonce(nonce):
+    i = len(format(nonce,'04b'))
+    return nonce << (8 - i)
+
 def saes_ctr_encrypt(plaintext, key, nonce):
     ciphertext = []
     keys = key_expansion(key)
-    counter = nonce << 8
+    counter = shift_nonce(nonce) << 8
     for i, byte in enumerate(plaintext):
         counter += i
         keystream_block = saes_encrypt(counter, keys)
@@ -131,13 +136,24 @@ def saes_ctr_decrypt(ciphertext, key, nonce):
     bytes_cipher = bytes.fromhex(ciphertext)
     return saes_ctr_encrypt(bytes_cipher, key, nonce)
 
+def brute_force_both(plaintext, ciphertext):
+    for key in range(0x2473, 0xFFFF):
+        print(key)
+        for nonce in range(0xFF):
+            cipher2 = saes_ctr_encrypt(plaintext, key, nonce)
+            if cipher2.hex() == ciphertext:
+                print(f"Key: {hex(key)}, Nonce: {hex(nonce)}")
+                
 key = 0x2475
 nonce = 0x10
+
 
 plaintext = b"Test String"
 ciphertext = saes_ctr_encrypt(plaintext, key, nonce)
 print(f"Ciphertext: {ciphertext.hex()}")
 
-encrypted_message = "d677a12602918e488a0dcc"
+encrypted_message = "7637c166a2310e985aad2c"
 decrypted_message = saes_ctr_decrypt(encrypted_message, key, nonce)
 print(f"Decrypted Cipher: {decrypted_message.decode()}")
+
+#brute_force_both(plaintext, encrypted_message)
