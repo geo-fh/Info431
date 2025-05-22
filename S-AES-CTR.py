@@ -1,3 +1,6 @@
+import tkinter as tk
+from tkinter import ttk
+
 SBOX = [
     0x09, 0x04, 0x0A, 0x0B,
     0x0D, 0x01, 0x08, 0x05,
@@ -123,26 +126,29 @@ def shift_nonce(nonce):
     return nonce << (8 - i)
 
 def saes_ctr_encrypt(plaintext, key, nonce):
-    ciphertext = []
+    ciphertext = bytearray()
     keys = key_expansion(key)
-    counter = shift_nonce(nonce) << 8
-    for i, byte in enumerate(plaintext):
-        counter += i
+    padded_plaintext = plaintext if len(plaintext) % 2 == 0 else plaintext + b'\x00'
+    for i in range(0, len(padded_plaintext), 2):
+        counter = (nonce << 8) | (i // 2)
         keystream_block = saes_encrypt(counter, keys)
-        ciphertext.append(byte ^ ((keystream_block >> 8)))
-    return bytes(ciphertext)
+        block = padded_plaintext[i:i+2]
+        encrypted_block = (int.from_bytes(block) ^ keystream_block).to_bytes(2)
+        ciphertext.extend(encrypted_block)
+    return bytes(ciphertext[:len(plaintext)])
 
 def saes_ctr_decrypt(ciphertext, key, nonce):
     bytes_cipher = bytes.fromhex(ciphertext)
     return saes_ctr_encrypt(bytes_cipher, key, nonce)
 
 def brute_force_both(plaintext, ciphertext):
-    for key in range(0x2473, 0xFFFF):
+    for key in range(0xFFFF):
         print(key)
         for nonce in range(0xFF):
             cipher2 = saes_ctr_encrypt(plaintext, key, nonce)
             if cipher2.hex() == ciphertext:
                 print(f"Key: {hex(key)}, Nonce: {hex(nonce)}")
+                return
                 
 key = 0x2475
 nonce = 0x10
@@ -152,8 +158,19 @@ plaintext = b"Test String"
 ciphertext = saes_ctr_encrypt(plaintext, key, nonce)
 print(f"Ciphertext: {ciphertext.hex()}")
 
-encrypted_message = "7637c166a2310e985aad2c"
+encrypted_message = "d69c618522a5a6808b9095"
 decrypted_message = saes_ctr_decrypt(encrypted_message, key, nonce)
 print(f"Decrypted Cipher: {decrypted_message.decode()}")
 
 #brute_force_both(plaintext, encrypted_message)
+
+root = tk.Tk()
+root.title("S-AES-CTR")
+root.geometry("500x400")
+
+root.columnconfigure(0, weight=1)
+root.columnconfigure(1, weight=3)
+
+ttk.Label(root, text="Nonce (8-bit)")
+
+root.mainloop()
