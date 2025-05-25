@@ -27,21 +27,36 @@ INV_MIX_COL = [
 
 # Generated using http://www.ee.unb.ca/cgi-bin/tervo/galois3.pl?p=4&C=1&h=1&D=1&A=1
 GF_MULT_TABLE = [
-    [0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F],
-    [0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C, 0x0E, 0x03, 0x01, 0x07, 0x05, 0x0B, 0x09, 0x0F, 0x0D],
-    [0x03, 0x06, 0x05, 0x0C, 0x0F, 0x0A, 0x09, 0x0B, 0x08, 0x0D, 0x0E, 0x07, 0x04, 0x01, 0x02],
-    [0x04, 0x08, 0x0C, 0x03, 0x07, 0x0B, 0x0F, 0x06, 0x02, 0x0E, 0x0A, 0x05, 0x01, 0x0D, 0x09],
-    [0x05, 0x0A, 0x0F, 0x07, 0x02, 0x0D, 0x08, 0x0E, 0x0B, 0x04, 0x01, 0x09, 0x0C, 0x03, 0x06],
-    [0x06, 0x0C, 0x0A, 0x0B, 0x0D, 0x07, 0x01, 0x05, 0x03, 0x09, 0x0F, 0x0E, 0x08, 0x02, 0x04],
-    [0x07, 0x0E, 0x09, 0x0F, 0x08, 0x01, 0x06, 0x0D, 0x0A, 0x03, 0x04, 0x02, 0x05, 0x0C, 0x0B],
-    [0x08, 0x03, 0x0B, 0x06, 0x0E, 0x05, 0x0D, 0x0C, 0x04, 0x0F, 0x07, 0x0A, 0x02, 0x09, 0x01],
-    [0x09, 0x01, 0x08, 0x02, 0x0B, 0x03, 0x0A, 0x04, 0x0D, 0x05, 0x0C, 0x06, 0x0F, 0x07, 0x0E],
-    [0x0A, 0x07, 0x0D, 0x0E, 0x04, 0x09, 0x03, 0x0F, 0x05, 0x08, 0x02, 0x01, 0x0B, 0x06, 0x0C],
-    [0x0B, 0x05, 0x0E, 0x0A, 0x01, 0x0F, 0x04, 0x07, 0x0C, 0x02, 0x09, 0x0D, 0x06, 0x08, 0x03],
-    [0x0C, 0x0B, 0x07, 0x05, 0x09, 0x0E, 0x02, 0x0A, 0x06, 0x01, 0x0D, 0x0F, 0x03, 0x04, 0x08],
-    [0x0D, 0x09, 0x04, 0x01, 0x0C, 0x08, 0x05, 0x02, 0x0F, 0x0B, 0x06, 0x03, 0x0E, 0x0A, 0x07],
-    [0x0E, 0x0F, 0x01, 0x0D, 0x03, 0x02, 0x0C, 0x09, 0x07, 0x06, 0x08, 0x04, 0x0A, 0x0B, 0x05],
-    [0x0F, 0x0D, 0x02, 0x09, 0x06, 0x04, 0x0B, 0x01, 0x0E, 0x0C, 0x03, 0x08, 0x07, 0x05, 0x0A]
+    [0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08,
+        0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F],
+    [0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C, 0x0E, 0x03,
+        0x01, 0x07, 0x05, 0x0B, 0x09, 0x0F, 0x0D],
+    [0x03, 0x06, 0x05, 0x0C, 0x0F, 0x0A, 0x09, 0x0B,
+        0x08, 0x0D, 0x0E, 0x07, 0x04, 0x01, 0x02],
+    [0x04, 0x08, 0x0C, 0x03, 0x07, 0x0B, 0x0F, 0x06,
+        0x02, 0x0E, 0x0A, 0x05, 0x01, 0x0D, 0x09],
+    [0x05, 0x0A, 0x0F, 0x07, 0x02, 0x0D, 0x08, 0x0E,
+        0x0B, 0x04, 0x01, 0x09, 0x0C, 0x03, 0x06],
+    [0x06, 0x0C, 0x0A, 0x0B, 0x0D, 0x07, 0x01, 0x05,
+        0x03, 0x09, 0x0F, 0x0E, 0x08, 0x02, 0x04],
+    [0x07, 0x0E, 0x09, 0x0F, 0x08, 0x01, 0x06, 0x0D,
+        0x0A, 0x03, 0x04, 0x02, 0x05, 0x0C, 0x0B],
+    [0x08, 0x03, 0x0B, 0x06, 0x0E, 0x05, 0x0D, 0x0C,
+        0x04, 0x0F, 0x07, 0x0A, 0x02, 0x09, 0x01],
+    [0x09, 0x01, 0x08, 0x02, 0x0B, 0x03, 0x0A, 0x04,
+        0x0D, 0x05, 0x0C, 0x06, 0x0F, 0x07, 0x0E],
+    [0x0A, 0x07, 0x0D, 0x0E, 0x04, 0x09, 0x03, 0x0F,
+        0x05, 0x08, 0x02, 0x01, 0x0B, 0x06, 0x0C],
+    [0x0B, 0x05, 0x0E, 0x0A, 0x01, 0x0F, 0x04, 0x07,
+        0x0C, 0x02, 0x09, 0x0D, 0x06, 0x08, 0x03],
+    [0x0C, 0x0B, 0x07, 0x05, 0x09, 0x0E, 0x02, 0x0A,
+        0x06, 0x01, 0x0D, 0x0F, 0x03, 0x04, 0x08],
+    [0x0D, 0x09, 0x04, 0x01, 0x0C, 0x08, 0x05, 0x02,
+        0x0F, 0x0B, 0x06, 0x03, 0x0E, 0x0A, 0x07],
+    [0x0E, 0x0F, 0x01, 0x0D, 0x03, 0x02, 0x0C, 0x09,
+        0x07, 0x06, 0x08, 0x04, 0x0A, 0x0B, 0x05],
+    [0x0F, 0x0D, 0x02, 0x09, 0x06, 0x04, 0x0B, 0x01,
+        0x0E, 0x0C, 0x03, 0x08, 0x07, 0x05, 0x0A]
 ]
 
 
@@ -81,9 +96,11 @@ def key_expansion(key):
 
 
 def add_round_key(state, key):
-    key_frags = [(key >> 12) & 0xF, (key >> 8) & 0xF, (key >> 4) & 0xF, key & 0xF]
+    key_frags = [(key >> 12) & 0xF, (key >> 8) &
+                 0xF, (key >> 4) & 0xF, key & 0xF]
     state = [state[i] ^ key_frags[i] for i in range(4)]
     return state
+
 
 def sub_nibbles(state):
     return [SBOX[state[0]], SBOX[state[1]], SBOX[state[2]], SBOX[state[3]]]
@@ -92,15 +109,21 @@ def sub_nibbles(state):
 def shift_rows(state):
     return [state[0], state[3], state[2], state[1]]
 
+
 def gf_mult(num1, num2):
-    return num1*num2 if num1*num2<16 else GF_MULT_TABLE[num1-1][num2-1]
+    return num1*num2 if num1*num2 < 16 else GF_MULT_TABLE[num1-1][num2-1]
+
 
 def mix_columns(state):
     temp_state = [None]*4
-    temp_state[0] = gf_mult(MIX_COL[0][0],state[0]) ^ gf_mult(MIX_COL[0][1],state[1])
-    temp_state[1] = gf_mult(MIX_COL[1][0],state[0]) ^ gf_mult(MIX_COL[1][1],state[1])
-    temp_state[2] = gf_mult(MIX_COL[0][0],state[2]) ^ gf_mult(MIX_COL[0][1],state[3])
-    temp_state[3] = gf_mult(MIX_COL[1][0],state[2]) ^ gf_mult(MIX_COL[1][1],state[3])
+    temp_state[0] = gf_mult(MIX_COL[0][0], state[0]) ^ gf_mult(
+        MIX_COL[0][1], state[1])
+    temp_state[1] = gf_mult(MIX_COL[1][0], state[0]) ^ gf_mult(
+        MIX_COL[1][1], state[1])
+    temp_state[2] = gf_mult(MIX_COL[0][0], state[2]) ^ gf_mult(
+        MIX_COL[0][1], state[3])
+    temp_state[3] = gf_mult(MIX_COL[1][0], state[2]) ^ gf_mult(
+        MIX_COL[1][1], state[3])
     return temp_state
 
 
@@ -120,15 +143,20 @@ def saes_encrypt(block, keys):
 
     return (state[0] << 12) | (state[1] << 8) | (state[2] << 4) | state[3]
 
+
 """Shifts nonce into 8-bit size"""
+
+
 def shift_nonce(nonce):
-    i = len(format(nonce,'04b'))
+    i = len(format(nonce, '04b'))
     return nonce << (8 - i)
+
 
 def saes_ctr_encrypt(plaintext, key, nonce):
     ciphertext = bytearray()
     keys = key_expansion(key)
-    padded_plaintext = plaintext if len(plaintext) % 2 == 0 else plaintext + b'\x00'
+    padded_plaintext = plaintext if len(
+        plaintext) % 2 == 0 else plaintext + b'\x00'
     for i in range(0, len(padded_plaintext), 2):
         counter = (nonce << 8) | (i // 2)
         keystream_block = saes_encrypt(counter, keys)
@@ -137,19 +165,22 @@ def saes_ctr_encrypt(plaintext, key, nonce):
         ciphertext.extend(encrypted_block)
     return bytes(ciphertext[:len(plaintext)])
 
+
 def saes_ctr_decrypt(ciphertext, key, nonce):
     bytes_cipher = bytes.fromhex(ciphertext)
     return saes_ctr_encrypt(bytes_cipher, key, nonce)
 
+
 def brute_force_both(plaintext, ciphertext):
-    for key in range(0xFFFF):
+    for key in range(0x2470,0xFFFF):
         print(key)
         for nonce in range(0xFF):
             cipher2 = saes_ctr_encrypt(plaintext, key, nonce)
             if cipher2.hex() == ciphertext:
                 print(f"Key: {hex(key)}, Nonce: {hex(nonce)}")
-                return
-                
+                return hex(key), hex(nonce)
+
+
 key = 0x2475
 nonce = 0x10
 
@@ -162,15 +193,135 @@ encrypted_message = "d69c618522a5a6808b9095"
 decrypted_message = saes_ctr_decrypt(encrypted_message, key, nonce)
 print(f"Decrypted Cipher: {decrypted_message.decode()}")
 
-#brute_force_both(plaintext, encrypted_message)
+# brute_force_both(plaintext, encrypted_message)
+
+def gui_encrypt():
+    plaintext = e_plaintext.get().encode()
+    key = int(e_key.get(), 16)
+    nonce = int(e_nonce.get(), 16)
+    ciphertext = saes_ctr_encrypt(plaintext, key, nonce)
+    e_ciphertext.config(state='normal')
+    e_ciphertext.delete(0, tk.END)
+    e_ciphertext.insert(0, ciphertext.hex())
+    e_ciphertext.config(state='readonly')
+
+def gui_decrypt():
+    ciphertext = d_ciphertext.get()
+    key = int(d_key.get(), 16)
+    nonce = int(d_nonce.get(), 16)
+    plaintext = saes_ctr_decrypt(ciphertext, key, nonce)
+    d_plaintext.config(state='normal')
+    d_plaintext.delete(0, tk.END)
+    d_plaintext.insert(0, plaintext)
+    d_plaintext.config(state='readonly')
+
+def gui_bruteforce():
+    plaintext = bf_plaintext.get().encode()
+    ciphertext = bf_ciphertext.get()
+    key, nonce = brute_force_both(plaintext, ciphertext)
+    bf_key.config(state='normal')
+    bf_key.delete(0, tk.END)
+    bf_key.insert(0, key)
+    bf_key.config(state='readonly')
+    bf_nonce.config(state='normal')
+    bf_nonce.delete(0, tk.END)
+    bf_nonce.insert(0, nonce)
+    bf_nonce.config(state='readonly')
 
 root = tk.Tk()
 root.title("S-AES-CTR")
 root.geometry("500x400")
+root.resizable(False, False)
 
-root.columnconfigure(0, weight=1)
-root.columnconfigure(1, weight=3)
+notebook = ttk.Notebook(root)
+notebook.pack(fill="both", expand=True)
 
-ttk.Label(root, text="Nonce (8-bit)")
+tab1 = ttk.Frame(notebook)
+tab2 = ttk.Frame(notebook)
+tab3 = ttk.Frame(notebook)
+
+tab1.rowconfigure(0, weight=1, uniform='rows')
+tab1.rowconfigure(1, weight=1, uniform='rows')
+tab1.rowconfigure(2, weight=1, uniform='rows')
+tab1.rowconfigure(3, weight=1, uniform='rows')
+tab1.rowconfigure(4, weight=1, uniform='rows')
+tab2.rowconfigure(0, weight=1, uniform='rows')
+tab2.rowconfigure(1, weight=1, uniform='rows')
+tab2.rowconfigure(2, weight=1, uniform='rows')
+tab2.rowconfigure(3, weight=1, uniform='rows')
+tab2.rowconfigure(4, weight=1, uniform='rows')
+tab3.rowconfigure(0, weight=1, uniform='rows')
+tab3.rowconfigure(1, weight=1, uniform='rows')
+tab3.rowconfigure(2, weight=1, uniform='rows')
+tab3.rowconfigure(3, weight=1, uniform='rows')
+tab3.rowconfigure(4, weight=1, uniform='rows')
+tab3.rowconfigure(5, weight=1, uniform='rows')
+tab1.columnconfigure(0, weight=1, uniform='cols')
+tab1.columnconfigure(1, weight=1, uniform='cols')
+tab1.columnconfigure(2, weight=1, uniform='cols')
+tab2.columnconfigure(0, weight=1, uniform='cols')
+tab2.columnconfigure(1, weight=1, uniform='cols')
+tab2.columnconfigure(2, weight=1, uniform='cols')
+tab3.columnconfigure(0, weight=1, uniform='cols')
+tab3.columnconfigure(1, weight=1, uniform='cols')
+tab3.columnconfigure(2, weight=1, uniform='cols')
+
+notebook.add(tab1, text="Encrypt")
+notebook.add(tab2, text="Decrypt")
+notebook.add(tab3, text="Brute Force")
+
+style = ttk.Style()
+style.configure("Label.TLabel", font=("Arial Bold", 10),
+                anchor="center", padding=(10, 10))
+style.configure("Entry.TEntry", font=("Arial", 10),
+                anchor="center", padding=(10, 10))
+style.configure("Button.TButton", font=("Arial", 10),
+                anchor="center", padding=(10, 10))
+
+ttk.Label(tab1, text="Plaintext:", style='Label.TLabel').grid(row=0, column=0)
+e_plaintext = ttk.Entry(tab1, style='Entry.TEntry')
+e_plaintext.grid(row=0, column=1, columnspan=2, sticky='ew', padx=(0,30))
+ttk.Label(tab1, text="Key:", style='Label.TLabel').grid(row=1, column=0)
+e_key = ttk.Entry(tab1, style='Entry.TEntry')
+e_key.grid(row=1, column=1, columnspan=2, sticky='ew', padx=(0,30))
+ttk.Label(tab1, text="Nonce (8-bit):", style='Label.TLabel').grid(row=2, column=0)
+e_nonce = ttk.Entry(tab1, style='Entry.TEntry')
+e_nonce.grid(row=2, column=1, columnspan=2, sticky='ew', padx=(0,30))
+ttk.Button(tab1, text="Encrypt", style='Button.TButton', command=gui_encrypt).grid(row=3, column=1)
+ttk.Label(tab1, text="Ciphertext:", style='Label.TLabel').grid(row=4, column=0)
+e_ciphertext = ttk.Entry(tab1, style='Entry.TEntry', state='readonly')
+e_ciphertext.grid(row=4, column=1, columnspan=2, sticky='ew', padx=(0,30))
+
+ttk.Label(tab2, text="Ciphertext:", style='Label.TLabel').grid(row=0, column=0)
+d_ciphertext = ttk.Entry(tab2, style='Entry.TEntry')
+d_ciphertext.grid(row=0, column=1, columnspan=2, sticky='ew', padx=(0,30))
+ttk.Label(tab2, text="Key:", style='Label.TLabel').grid(row=1, column=0)
+d_key = ttk.Entry(tab2, style='Entry.TEntry')
+d_key.grid(row=1, column=1, columnspan=2, sticky='ew', padx=(0,30))
+ttk.Label(tab2, text="Nonce (8-bit):", style='Label.TLabel').grid(row=2, column=0)
+d_nonce = ttk.Entry(tab2, style='Entry.TEntry')
+d_nonce.grid(row=2, column=1, columnspan=2, sticky='ew', padx=(0,30))
+ttk.Button(tab2, text="Encrypt", style='Button.TButton', command=gui_decrypt).grid(row=3, column=1)
+ttk.Label(tab2, text="Plaintext:", style='Label.TLabel').grid(row=4, column=0)
+d_plaintext = ttk.Entry(tab2, style='Entry.TEntry', state='readonly')
+d_plaintext.grid(row=4, column=1, columnspan=2, sticky='ew', padx=(0,30))
+
+ttk.Label(tab3, text="Plaintext:", style='Label.TLabel').grid(row=0, column=0)
+bf_plaintext = ttk.Entry(tab3, style='Entry.TEntry')
+bf_plaintext.grid(row=0, column=1, columnspan=2, sticky='ew', padx=(0,30))
+ttk.Label(tab3, text="Ciphertext:", style='Label.TLabel').grid(row=1, column=0)
+bf_ciphertext = ttk.Entry(tab3, style='Entry.TEntry')
+bf_ciphertext.grid(row=1, column=1, columnspan=2, sticky='ew', padx=(0,30))
+ttk.Button(tab3, text="Bruteforce", style='Button.TButton', command=gui_bruteforce).grid(row=2, column=1)
+progress_bar = ttk.Progressbar(tab3, orient='horizontal', mode='determinate')
+progress_bar.grid(row=3, column=0, columnspan=2, sticky='ew', padx=(30,0))
+progress_label = ttk.Label(tab3, text="0000/FFFF", style='Label.TLabel')
+progress_label.grid(row=3, column=2)
+ttk.Label(tab3, text="Key:", style='Label.TLabel').grid(row=4, column=0)
+bf_key = ttk.Entry(tab3, style='Entry.TEntry', state='readonly')
+bf_key.grid(row=4, column=1, columnspan=2, sticky='ew', padx=(0,30))
+ttk.Label(tab3, text="Nonce:", style='Label.TLabel').grid(row=5, column=0)
+bf_nonce = ttk.Entry(tab3, style='Entry.TEntry', state='readonly')
+bf_nonce.grid(row=5, column=1, columnspan=2, sticky='ew', padx=(0,30))
 
 root.mainloop()
