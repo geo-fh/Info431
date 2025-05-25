@@ -2,16 +2,20 @@
 
 
 S-AES Encryption/Decryption: 16-bit block cipher with 16-bit key
+
 CTR Mode: Converts block cipher to stream cipher
+
 GUI Interface:
-    Built with Tkinter
+    
+	Built with Tkinter
     Encryption Tab
     Decryption Tab
     Bruteforce Attack Tab
 
 
 S-AES Implementation
-    Key Expansion
+    
+	Key Expansion
     S-Box (Substitution Box): Predefined lookup table
     Galois Field (2^4) Multiplication Table: Constant once generated, calculated up to 2^4 in this case
     2 Round Transformations:
@@ -29,13 +33,15 @@ S-AES Implementation
 
 
 CTR Mode
-    Nonce: 8-bit in this implementation, concatenated with an 8-bit counter
+    
+	Nonce: 8-bit in this implementation, concatenated with an 8-bit counter
     Keystream Generation: S-AES(nonce || counter)
     Counter Mode: Encryption and Decryption are identical, Encryption a ciphertext returns its decrypted plaintext
 
 
 Installation:
-    Prerequisites:
+    
+	Prerequisites:
         Python 3.13+
         Tkinter (usually included with Python)
     Installation:
@@ -44,7 +50,8 @@ Installation:
 
 
 GUI Mode:
-    How to run the tkinter interface:
+    
+	How to run the tkinter interface:
         python S-AES-CTR.py
     Interface guide:
         Encryption Mode:
@@ -65,6 +72,7 @@ GUI Mode:
 
 
 Limitations:
-    Educational Use Only: Not secure for real-world applications
+    
+	Educational Use Only: Not secure for real-world applications
     Key Size: 16-bit keys are trivial to brute force
     Ciphertext Size: Ciphertext length is identical to Plaintext length
